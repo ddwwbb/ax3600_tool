@@ -29,3 +29,10 @@ Show sn only
 set sn(automatic reboot and relock the partition lock)
 
 `/tmp/mitool.sh setsn xxxxxxxxxxxxx`
+
+如升级后ssh被禁用可以用telnet登录，执行下面代码再次启用ssh
+```
+sed -i 's/channel=.*/channel="debug"/g' /etc/init.d/dropbear
+/etc/init.d/dropbear start
+```
+至此基本可以保证机器长期拥有root权限
